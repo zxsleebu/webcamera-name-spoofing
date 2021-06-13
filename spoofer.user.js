@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Webcamera names spoofing
 // @namespace    https://instagram.com/zxsleebu
-// @version      1
+// @version      1.1
 // @description  try to take over the world!
 // @author       @zxsleebu
 // @match        http://*/*
@@ -31,11 +31,11 @@
                 for(let device in devices){
                     var old3 = devices[device].getCapabilities;
                     var ret3 = JSON.parse(JSON.stringify(devices[device]));
-                    if(ret3.kind == "videoinput"){
+                    if(ret3.label === "OBS Virtual Camera"){
+                        ret3.getCapabilities = old3;
                         ret3.label = cameraName;
+                        ret4.push(ret3)
                     }
-                    ret3.getCapabilities = old3;
-                    ret4.push(ret3)
                 }
                 resolve(ret4);
             }).catch(err => {reject(err)});
