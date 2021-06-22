@@ -13,7 +13,7 @@
 (function() {
     var cameraName = "HD 720P Webcam (0c45:6340)";
     var width = 1080;
-    var height = 1920;
+    var height = 1080;
 
     console.log("Webcamera spoof enabled!\nCurrent name: " + cameraName);
     var old = MediaStream.prototype.getVideoTracks;
